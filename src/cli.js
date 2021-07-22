@@ -2,23 +2,24 @@
 
 const program = require('commander');
 const { join } = require('path');
-const fs = require('fs');
-const inquirer = require('inquirer');
 const chalk = require("chalk");
-const Table = require("cli-table");
 const shell = require('shelljs');
+const pkg = require(join(__dirname, "..",'package.json'));
+const updateNotifier = require('update-notifier');
 
-const package = require(join(__dirname, "..",'package.json'));
-const todosPath = join(__dirname, 'todos.json');
 
+updateNotifier({pkg}).notify();
 const task = require('./Commands/Task')
+const teste = require('./Commands/Test')
 
 
-program.version(package.version,"-v,--version","Shows program version")
+program
+    .version(pkg.version,"-v,--version","Shows program version")
     .allowUnknownOption(false)
     .allowExcessArguments(false);
 
 program.addCommand(task)
+program.addCommand(teste)
 
 program
     .command('backup')

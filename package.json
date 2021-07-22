@@ -3,13 +3,10 @@
   "version": "1.0.1",
   "description": "https://medium.com/henriquekuwai/criando-sua-cli-com-node-js-d6dee7d03110",
   "main": "./src/cli.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "bin": {
     "rod": "./src/cli.js"
   },
-  "files":[
+  "files": [
     "./src",
     "README.md"
   ],
@@ -30,11 +27,14 @@
   },
   "homepage": "https://github.com/rodcordeiro/rodCLi#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "chalk": "^4.1.1",
     "cli-table": "^0.3.6",
     "commander": "^8.0.0",
     "figlet": "^1.5.0",
     "inquirer": "^8.1.2",
-    "shelljs": "^0.8.4"
+    "ora": "^5.4.1",
+    "shelljs": "^0.8.4",
+    "update-notifier": "^5.1.0"
   }
 }
