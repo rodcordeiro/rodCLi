@@ -1,7 +1,7 @@
 {
   "name": "@rodcordeiro/rodcli",
-  "version": "1.0.1",
-  "description": "https://medium.com/henriquekuwai/criando-sua-cli-com-node-js-d6dee7d03110",
+  "version": "1.0.2",
+  "description": "Personal assistant with todo list, folders management and other automation stuffs",
   "main": "./src/cli.js",
   "bin": {
     "rod": "./src/cli.js"
@@ -16,8 +16,8 @@
   },
   "keywords": [
     "cli",
-    "todo list",
-    "tasks"
+    "task manager",
+    "personal assistant"
   ],
   "author": "Rodrigo Cordeiro <rodrigomendoncca@gmail.com>",
   "license": "ISC",
@@ -31,6 +31,7 @@
     "chalk": "^4.1.1",
     "cli-table": "^0.3.6",
     "commander": "^8.0.0",
+    "configstore": "^5.0.1",
     "figlet": "^1.5.0",
     "inquirer": "^8.1.2",
     "ora": "^5.4.1",

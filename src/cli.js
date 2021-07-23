@@ -9,8 +9,12 @@ const updateNotifier = require('update-notifier');
 
 
 updateNotifier({pkg}).notify();
+
 const task = require('./Commands/Task')
 const teste = require('./Commands/Test')
+const make = require('./Commands/Make')
+const login = require('./Commands/Login')
+const whoami = require('./Commands/whoami')
 
 
 program
@@ -20,6 +24,9 @@ program
 
 program.addCommand(task)
 program.addCommand(teste)
+program.addCommand(make)
+program.addCommand(login)
+program.addCommand(whoami)
 
 program
     .command('backup')

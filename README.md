@@ -23,4 +23,3 @@ https://github.com/stevescruz/task-master
 ---
 https://github.com/sindresorhus/ora
 
-https://www.npmjs.com/package/update-notifier
