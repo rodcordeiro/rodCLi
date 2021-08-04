@@ -22,7 +22,7 @@ const saveJson = (path, data) => fs.writeFileSync(path, JSON.stringify(data, nul
 const showTodoTable = (data) => {
     const table = new Table({
         head: ['id', 'to-do', 'status'],
-        colWidths: [10, 20, 10]
+        colWidths: [10, 40, 10]
     });
     data.map((todo, index) =>
         table.push(

@@ -1,15 +1,11 @@
 {
   "name": "@rodcordeiro/rodcli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Personal assistant with todo list, folders management and other automation stuffs",
   "main": "./src/cli.js",
   "bin": {
     "rod": "./src/cli.js"
   },
-  "files": [
-    "./src",
-    "README.md"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rodcordeiro/rodCLi.git"
