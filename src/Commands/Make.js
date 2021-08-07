@@ -19,12 +19,22 @@ make
         path = path ? Path.resolve(path,name) : Path.resolve("./",name)
         
         shell.mkdir('-p', path);
-        console.log(chalk.cyan("Pasta criada"))
+        console.log(chalk.cyan(`Pasta ${path} criada`))
 
         if (options.template){
             switch (options.template) {
-                case "node":
-                    command = shell.exec(`cd ${path} && npm init -y`, { silent: true });
+                case "shell":
+                    const shell_basic_structure = "#!/usr/bin/env bash \
+\
+                    "
+                    command = shell.exec(`cd ${path} && git init`, { silent: true });
+                    if (!command.code) {
+                        console.log(chalk.green(command.stdout));
+                    } else {
+                        console.log(chalk.red('Erro ao iniciar o projeto.'))
+                        console.log(command.stderr);
+                    }
+                    command = shell.exec(`echo ${shell_basic_structure} > ${Path.resolve(path,name)}.sh`, { silent: true });
                     if (!command.code) {
                         console.log(chalk.green(command.stdout));
                     } else {
@@ -32,8 +42,32 @@ make
                         console.log(command.stderr);
                     }
                     break;
+                case "powershell":
+                    command = shell.exec(`cd ${path} && git init`, { silent: true });
+                    if (!command.code) {
+                        console.log(chalk.green(command.stdout));
+                    } else {
+                        console.log(chalk.red('Erro ao iniciar o projeto.'))
+                        console.log(command.stderr);
+                    }
+                    command = shell.exec(`New-ScriptFileInfo -Version 1.0 -Author "Rodrigo Cordeiro <rodrigomendoncca@gmail.com>" -description "Script description" -Path ${Path.resolve(path,name)}.ps1`, { silent: true });
+                    if (!command.code) {
+                        console.log(chalk.green(command.stdout));
+                    } else {
+                        console.log(chalk.red('Erro ao iniciar o projeto.'))
+                        console.log(command.stderr);
+                    }
+                    break;
+                case "node":
+                    command = shell.exec(`cd ${path} && git init && npm init -y`, { silent: true });
+                    if (!command.code) {
+                        console.log(chalk.green(command.stdout));
+                    } else {
+                        console.log(command.stderr);
+                    }
+                    break;
                 case "typescript":
-                    command = shell.exec(`cd ${path} && npm init -y`, { silent: true });
+                    command = shell.exec(`cd ${path} && git init && npm init -y`, { silent: true });
                     if (!command.code) {
                         console.log(chalk.green(command.stdout));
                     } else {
