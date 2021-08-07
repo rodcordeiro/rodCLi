@@ -24,9 +24,18 @@ make
         if (options.template){
             switch (options.template) {
                 case "shell":
-                    const shell_basic_structure = "#!/usr/bin/env bash \
-\
-                    "
+                    const shell_basic_structure = [`#!/usr/bin/env bash `,`\
+#`,`\
+# ---------------------------------------------------------------- #  `,`\
+# Script Name:   ${Path.resolve(path,name)}.sh `,`\
+# Description:   Update description about script `,`\
+# Linkedin:      https://www.linkedin.com/in/rodrigomcordeiro/ `,`\
+# Author:        Rodrigo Cordeiro `,`\
+# ---------------------------------------------------------------- # `,`\
+# Usage: `,`\
+#       $ ${Path.resolve(path,name)}.sh `,`\
+# `,`\
+# -----------------------------------------------------------------#`]
                     command = shell.exec(`cd ${path} && git init`, { silent: true });
                     if (!command.code) {
                         console.log(chalk.green(command.stdout));
@@ -34,13 +43,13 @@ make
                         console.log(chalk.red('Erro ao iniciar o projeto.'))
                         console.log(command.stderr);
                     }
-                    command = shell.exec(`echo ${shell_basic_structure} > ${Path.resolve(path,name)}.sh`, { silent: true });
-                    if (!command.code) {
-                        console.log(chalk.green(command.stdout));
-                    } else {
-                        console.log(chalk.red('Erro ao iniciar o projeto.'))
-                        console.log(command.stderr);
-                    }
+                    shell_basic_structure.forEach(struc=>{
+                        command = shell.exec(`echo ${struc} >> ${Path.resolve(path,name)}.sh`, { silent: true });
+                        if (command.code) {
+                            console.log(command.stderr);
+                        }
+                    })
+                    console.log(chalk.green("Finished"))
                     break;
                 case "powershell":
                     command = shell.exec(`cd ${path} && git init`, { silent: true });
