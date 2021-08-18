@@ -1,6 +1,6 @@
 {
   "name": "@rodcordeiro/rodcli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Personal assistant with todo list, folders management and other automation stuffs",
   "main": "./src/cli.js",
   "bin": {

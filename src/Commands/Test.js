@@ -1,6 +1,5 @@
 const { Command } = require('commander');
 const Path = require('path');
-const config = require('../utils/config')
 const Spinner = require('../utils/loader');
 const spinner = new Spinner();
 
@@ -16,17 +15,21 @@ test
         setTimeout(() => {
             spinner.color = 'yellow';
             spinner.text = 'Loading rainbows';
-        }, 3000);
+        }, 1500);
         setTimeout(() => {
             spinner.color = 'green';
             spinner.text = 'finished';
-        }, 6000);
+        }, 3000);
         setTimeout(() => {
-            spinner.succeed("Loaded")
-        }, 9000);
+            spinner.succeed("Lodaded")
+            console.log({
+                "./":Path.resolve("./"),
+                "__dirname":Path.resolve(__dirname,"./")
+            })
+        }, 5000);
         setTimeout(() => {
             spinner.stop();
-        }, 11000);
+        }, 8000);
 
 
         

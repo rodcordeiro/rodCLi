@@ -40,7 +40,7 @@ login
 
         const response = await api.post('/users/auth',payload).then(response=>{
             spinner.text = "Validating answer"
-            return response.data.response
+            return response.data
         }).catch(err=>{
             console.log({err},err.response.data);
             spinner.fail(chalk.redBright(err.response.data.error))
