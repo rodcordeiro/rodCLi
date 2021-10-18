@@ -6,6 +6,9 @@
   "bin": {
     "rod": "./src/cli.js"
   },
+  "scripts": {
+    "dev": "node ./src/cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rodcordeiro/rodCLi.git"

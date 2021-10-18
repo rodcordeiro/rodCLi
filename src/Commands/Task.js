@@ -35,11 +35,13 @@ const showTodoTable = (data) => {
 
 const task = new Command('task');
 
+task.alias('t')
 task.description("task manager")
 .helpOption("-h,--help","todo functionallity")
 
 task
     .command('add [todo]')
+    .alias('a')
     .description('Adiciona um to-do')
     .option('-s, --status [status]', 'Status inicial do to-do')
     .action(async (todo, options) => {
@@ -66,6 +68,7 @@ task
 
 task
     .command('list')
+    .alias('l')
     .description('Lista os to-dos')
     .action(() => {
         const data = getJson(todosPath);
@@ -96,7 +99,7 @@ task
         showTodoTable(data);
     });
 
-task
+    task
     .command('undo <todo>')
     .description('Marca o to-do como não feito')
     .action(async (todo) => {
@@ -118,6 +121,34 @@ task
         console.log(`${chalk.green('To-do salvo com sucesso!')}`);
         showTodoTable(data);
     });
+
+    task
+    .command('delete [todo]')
+    .alias('d')
+    .description('Marca o to-do como não feito')
+    .action(async (todo) => {
+        let answers;
+        if (!todo) {
+            answers = await inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'todo',
+                    message: 'Qual o id do to-do?',
+                    validate: value => value ? true : 'Defina um to-do para ser atualizado!'
+                }
+            ]);
+        }
+
+        const data = getJson(todosPath);
+        const task = data[todo];
+        const tasks = data.filter(t=>t!==task);
+        
+        console.log({data,tasks}); 
+        saveJson(todosPath, tasks);
+        console.log(`${chalk.green('To-do salvo com sucesso!')}`);
+        showTodoTable(tasks);
+    });
+
 
 
 module.exports = task;
