@@ -1,6 +1,5 @@
 ---
 
----
 # RodCli
 RodBot CLI is my personal CLI. developed as a personal terminal assistant for todo list and automated tasks. 
 
